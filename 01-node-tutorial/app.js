@@ -1,25 +1,18 @@
-// Modules
-
-const names = require('./04-names')
-const data = require('./06-alternative-flavor')
-const sayHi = require('./05-utils')
-require('./07-mind-grenade')
-
-// console.log(names);
-
-// const sayHi = (name) => {
+const os = require("os");
 
 
-//     console.log(`Hello there ${name}`);
 
-// }
+const user = os.userInfo()
 
-// console.log(data.singlePerson.name);
 
-// sayHi(data.singlePerson.name)
+console.log(user);
 
-// sayHi(names.john)
+console.log(os.uptime())
 
-// sayHi(john)
 
-// sayHi(peter)
+const currentOs = {
+    name: os.type(),
+    release: os.release(),
+    totalMem: os.totalmem(),
+    freeMem: os.freemem(),
+}
