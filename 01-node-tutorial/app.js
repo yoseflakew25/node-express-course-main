@@ -3,6 +3,7 @@
 const names = require('./04-names')
 const data = require('./06-alternative-flavor')
 const sayHi = require('./05-utils')
+require('./07-mind-grenade')
 
 // console.log(names);
 
@@ -13,9 +14,9 @@ const sayHi = require('./05-utils')
 
 // }
 
-console.log(data.singlePerson.name);
+// console.log(data.singlePerson.name);
 
-sayHi(data.singlePerson.name)
+// sayHi(data.singlePerson.name)
 
 // sayHi(names.john)
 
