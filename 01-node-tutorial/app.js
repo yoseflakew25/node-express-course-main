@@ -1,17 +1,20 @@
-const { readFile, writeFile } = require('fs');
+const http = require('http');
 
 
-
-const first=''
-readFile('./content/first.txt', 'utf8', (err, result) => { 
-    if (err) {
-        console.log(err);
-        return;
+const server = http.createServer((req, res) => {
+    if (req.url === '/') {
+        res.end('wellcome to our home page')
     }
-    first = result
+
+    if (req.url==='/about') {
+        res.end('this is our about page')
+    }
+
+
+    res.end('404')
+ 
 })
 
-
-console.log(first);
-
-
+server.listen(3000,()=>{
+    console.log('Server is running on port 3000');          
+})
