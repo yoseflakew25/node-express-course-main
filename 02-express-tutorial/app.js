@@ -22,6 +22,16 @@ app.get('/api/products', (req, res) => {
 
     res.json( newProducts)
 })
+
+
+
+app.get('/api/products/:productId', (req, res) => {
+    const singleProduct = products.find((product) => {
+        return product.id === parseInt(req.params.productId)
+     })     
+
+    res.json( singleProduct)
+})
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}!`)
 })
