@@ -37,6 +37,10 @@ app.get('/api/products/:productId', (req, res) => {
 
     res.json( singleProduct)
 })
+
+
+app.get()
+
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}!`)
 })
