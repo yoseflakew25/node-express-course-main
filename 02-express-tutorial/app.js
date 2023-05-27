@@ -54,7 +54,7 @@ app.get('/api/v1/query', (req, res) => {
         sortedProducts = sortedProducts.slice(0, parseInt(limit))
     }
 
-    res.status(200).json(sortedProducts)
+    res.status(200).json({sucess:true, data: sortedProducts})
  })
 
 app.listen(port, () => {
