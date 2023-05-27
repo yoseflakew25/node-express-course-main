@@ -39,7 +39,23 @@ app.get('/api/products/:productId', (req, res) => {
 })
 
 
-app.get()
+app.get('/api/v1/query', (req, res) => {
+    
+    const {search,limit} = req.query
+    let sortedProducts = [...products]
+    if (search){
+        sortedProducts = sortedProducts.filter((product) => {
+            return product.name.toLowerCase().startsWith(search.toLowerCase())
+        })
+    }
+
+
+    if (limit) {
+        sortedProducts = sortedProducts.slice(0, parseInt(limit))
+    }
+
+    res.status(200).json(sortedProducts)
+ })
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}!`)
