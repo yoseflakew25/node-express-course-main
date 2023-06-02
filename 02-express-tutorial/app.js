@@ -1,39 +1,11 @@
 const express = require('express')
 const app = express()
 const port = 3000
-const morgan=require('morgan')
-const logger = require('./logger')
-const authorize = require('./authorize')
+const {people}=require('./data')
 
-
-
-// req => middleware => res
-
-// app.use(express.static('./public'))
-
-app.use(morgan('tiny'))
-app.get('/',(req, res) => {
-
-    res.send("Home")
+app.get('/api/people', (req, res) => {
+    res.status(200).json({success:true, data:people})
 })
-
-
-
-app.get('/about', (req, res) => {
-    res.send("About")
-})
-
-
-app.get('/api/products',(req, res) => {
-
-    res.send("Products")
-})
-  
-
-app.get('/api/items', (req, res) => {
-    res.send("Items")
-})
-
 
 
 
