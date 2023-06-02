@@ -5,6 +5,10 @@ const {people}=require('./data')
 
 app.use(express.static('./methods-public'))
 
+app.use(express.json())
+
+
+app.use(express.urlencoded({extended:true}))
 
 
 app.get('/api/people', (req, res) => {
