@@ -1,67 +1,40 @@
 const express = require('express')
 const app = express()
 const port = 3000
+const morgan=require('morgan')
+const logger = require('./logger')
+const authorize = require('./authorize')
 
 
-const {products}=require('./data')
 
-app.get('/', (req, res) => {
-    res.json(  '<h1>Home Page</h1><a href="/api/products">products</a>') 
+// req => middleware => res
+
+// app.use(express.static('./public'))
+
+app.use(morgan('tiny'))
+app.get('/',(req, res) => {
+
+    res.send("Home")
 })
 
 
 
-app.get('/api/products', (req, res) => {
-    const newProducts = products.map((product) => {
-        return {
-            id: product.id,
-            name: product.name,
-            price: product.price
-        }
-    })
+app.get('/about', (req, res) => {
+    res.send("About")
+})
 
-    res.json( newProducts)
+
+app.get('/api/products',(req, res) => {
+
+    res.send("Products")
+})
+  
+
+app.get('/api/items', (req, res) => {
+    res.send("Items")
 })
 
 
 
-app.get('/api/products/:productId', (req, res) => {
-    const singleProduct = products.find((product) => {
-        return product.id === parseInt(req.params.productId)
-    })     
-    
 
-    if (!singleProduct){
-        return res.status(404).json({message: 'Product not found'})
-    }
-
-    res.json( singleProduct)
-})
-
-
-app.get('/api/v1/query', (req, res) => {
-    
-    const {search,limit} = req.query
-    let sortedProducts = [...products]
-    if (search){
-        sortedProducts = sortedProducts.filter((product) => {
-            return product.name.toLowerCase().startsWith(search.toLowerCase())
-        })
-    }
-
-
-    if (limit) {
-        sortedProducts = sortedProducts.slice(0, parseInt(limit))
-    }
-    if(sortedProducts.length < 1){
-        return res.status(404).json({message: 'No products found'})
-    }
-
-    return res.status(200).json({sucess:true, data: sortedProducts})
- })
-
-app.listen(port, () => {
-    console.log(`Example app listening on port ${port}!`)
-})
-
-
+app.listen(port, () => console.log(`Example app listening on port ${port}!`))
