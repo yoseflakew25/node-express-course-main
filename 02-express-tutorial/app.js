@@ -12,5 +12,8 @@ app.get('/api/people', (req, res) => {
 })
 
 
+app.post
+
+
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
