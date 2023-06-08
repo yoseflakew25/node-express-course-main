@@ -45,6 +45,10 @@ app.post('/login', (req, res) => {
 app.put('/api/people/:id', (req, res) => {
   const { id } = req.params
   const { name } = req.body
+
+  const person = people.find((person) => {
+    return person.id === Number(id)
+  })
 })
 
 
