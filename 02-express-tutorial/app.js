@@ -55,6 +55,16 @@ app.put('/api/people/:id', (req, res) => {
       .status(400)
       .json({ success: false, msg: `no person with id ${id}` })
   }
+
+
+  const newpeople=people.map((person)=>{
+    if (person.id === Number(id)) {
+      person.name = name
+    }
+    return person
+  })
+  res.status(200).json({ success: true, data: newpeople })
+
 })
 
 
