@@ -7,7 +7,7 @@ const {
     createPersonPostman,
     updatePerson,
     deletePerson
-}=require('../controllers/people')
+}=require('../controller/people')
 
 
 router.get('/',getPeople )
@@ -20,6 +20,7 @@ router.post('/postman',createPersonPostman )
 router.put('/:id', updatePerson)
 
 router.delete('/:id',deletePerson )
+
 
 
 
