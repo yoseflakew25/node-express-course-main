@@ -4,11 +4,11 @@ const router = express.Router()
 let { people } = require('../data')
 
 
-router.get('/, (req, res) => {
+router.get('/', (req, res) => {
   res.status(200).json({ success: true, data: people })
 })
 
-router.post('/, (req, res) => {
+router.post('/', (req, res) => {
   const { name } = req.body
   if (!name) {
     return res
