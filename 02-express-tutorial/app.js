@@ -49,6 +49,12 @@ app.put('/api/people/:id', (req, res) => {
   const person = people.find((person) => {
     return person.id === Number(id)
   })
+
+  if (!person) {
+    return res
+      .status(400)
+      .json({ success: false, msg: `no person with id ${id}` })
+  }
 })
 
 
